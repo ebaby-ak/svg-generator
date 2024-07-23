@@ -12,7 +12,7 @@ class svg {
     }
 }
 
-const questions = {
+const questions = [
     {
         type: 'input',
         name: 'text',
@@ -34,4 +34,4 @@ const questions = {
         name: 'shape-color',
         message: 'Enter color or hexadecimal:',
     },
-}
+];
