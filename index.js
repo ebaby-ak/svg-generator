@@ -1,5 +1,6 @@
 const filesystem = require('fs')
 const inquirer = require('inquirer');
+const path = require('path');
 const {Circle, Square, Triangle} = require('./lib/shapes.js')
 
 class svg {
@@ -10,7 +11,7 @@ class svg {
     render() {
         return 
     }
-}
+};
 
 const questions = [
     {
@@ -35,3 +36,21 @@ const questions = [
         message: 'Enter color or hexadecimal:',
     },
 ];
+function writeToFile(fileName, data) {
+  return fs.writeFileSync(path.join(process.cwd(), fileName), data);
+}
+
+function init() {
+  inquirer.prompt(questions).then((responses) => {
+    console.log("Create image.svg file:");
+    writeToFile(
+      "image.svg",
+      generateMarkdown({
+        ...responses,
+      })
+    );
+  });
+}
+
+
+init();
