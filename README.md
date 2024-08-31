@@ -2,7 +2,7 @@
 
 ## Description
 
-The challenge is to build the back end for the e-commerce site using the starter code provided. The starter code includes Express.js and API and uses Sequelize to interact with the e-commerce database. The models needed to be completed based on the category criteria listed and the routes needed to be configured based on the relationships.
+The challenge is to build a command-line SVG Logo Generator. The Logo is defined by a shape and a color, which is determined through user input. The shape options are Circle, Square, or Triangle. The color is broader as the user can input either names or hexadecimal values. After the user completes the input questions, the logo will be generated within the 'logos' folder and can be viewed in the live server.
 
 ## User Story
 
@@ -30,9 +30,33 @@ AND the output text "Generated logo.svg" is printed in the command line
 WHEN I open the `logo.svg` file in a browser
 THEN I am shown a 300x200 pixel image that matches the criteria I entered
 ```
+## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+- [Example](#example)
+- [Walkthrough](#walkthrough)
+- [Questions](#questions)
 
-## Walkthrough
+## Installation
+Follow these steps to install the application:
+1. run npm install to install the dependencies for the application
 
-[Walkthrough Video Link]()
+## Usage
+Follow these steps to run the application:
+1. run node index.js in your terminal to run the application
+
 ## License
 None
+
+
+## Example
+**Cirvle SVG Logo:**
+[Example](./example/svg-circle.png)
+
+## Walkthrough
+[Walkthrough Video Link]()
+
+## Questions
+For any questions, please reach out at:
+- [ebaby-ak](https://github.com/ebaby-ak)
