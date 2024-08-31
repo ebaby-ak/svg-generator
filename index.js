@@ -1,17 +1,7 @@
-const filesystem = require('fs')
+const fs = require('fs')
 const inquirer = require('inquirer');
-const path = require('path');
 const {Circle, Square, Triangle} = require('./lib/shapes.js')
 
-class svg {
-    constructor() {
-        this.textElement = ''
-        this.shapesElement = ''
-    }
-    render() {
-        return 
-    }
-};
 
 const questions = [
     {
@@ -21,36 +11,48 @@ const questions = [
     },
     {
         type: 'input',
-        name: 'text-color',
-        message: 'Enter color or hexadecimal:',
-    },
-    {
-        type: 'list',
-        name: 'shapes',
-        message: 'Choose shape:',
-        choices: ['circle','square','triangle'],
+        name: 'textColor',
+        message: 'Text: Enter color or hexadecimal:',
     },
     {
         type: 'input',
-        name: 'shape-color',
-        message: 'Enter color or hexadecimal:',
+        name: 'shapeColor',
+        message: 'Shape: Enter color or hexadecimal:',
+    },
+    {
+        type: 'list',
+        name: 'shapeChoice',
+        message: 'Choose shape:',
+        choices: ['Circle','Square','Triangle'],
     },
 ];
-function writeToFile(fileName, data) {
-  return fs.writeFileSync(path.join(process.cwd(), fileName), data);
+function createShape(text, textColor, shapeColor, shapeChoice) {
+  let inputShape;
+  if (shapeChoice === 'Circle') {
+    inputShape = new Circle(shapeColor);
+  } else if (shapeChoice === 'Triangle') {
+    inputShape = new Triangle(shapeColor);
+  } else if (shapeChoice === 'Square') {
+    inputShape = new Square(shapeColor);
+  }
+
+const svgContent = `
+<svg width='300' height='200' xmlns='http://www.w3.org/2000/svg'>${inputShape.render()}
+<text x='150' y='100' font-size='50' fill='${textColor}' text-anchor='middle' alignment-baseline='middle'>${text}</text>
+</svg>`;
+
+  return svgContent;
 }
 
-function init() {
-  inquirer.prompt(questions).then((responses) => {
-    console.log("Create image.svg file:");
-    writeToFile(
-      "image.svg",
-      generateMarkdown({
-        ...responses,
-      })
-    );
-  });
+  function saveToFile(filename, content) {
+    fs.writeFileSync(`logos/${filename}`, content);
+    console.log('Create Logo');
+  }
+
+async function runApp() {
+  const response = await inquirer.prompt(questions);
+  const data = createShape(response.text, response.textColor, response.shapeColor, response.shapeChoice);
+  saveToFile('logo.svg', data);
 }
 
-
-init();
+runApp();
