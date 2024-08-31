@@ -55,7 +55,7 @@ None
 [Example](./example/svg-circle.png)
 
 ## Walkthrough
-[Walkthrough Video Link]()
+[Walkthrough Video Link](https://drive.google.com/file/d/1UoNIMoOlw08XHEUov3UQUz4fcZp7nhcw/view)
 
 ## Questions
 For any questions, please reach out at:
